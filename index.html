@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    
+    <!-- SEO & Meta Tags -->
+    <title>Chic Doggie — Premium Pet Grooming Services</title>
+    <meta name="description" content="Tabela de serviços e preços exclusivos Chic Doggie. Grooming profissional com estética premium em USD.">
+    <meta name="theme-color" content="#0A0A0F">
+    
+    <!-- OpenGraph -->
+    <meta property="og:title" content="Chic Doggie — Serviços Premium">
+    <meta property="og:description" content="Confira nossa lista completa de serviços de grooming profissional.">
+    <meta property="og:type" content="website">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Color Palette */
+            --bg-deep: #0A0A0F;
+            --bg-surface: #121218;
+            --bg-card: #16161E;
+            --bg-accent: rgba(43, 110, 255, 0.08);
+            
+            --primary: #2B6EFF;
+            --primary-gradient: linear-gradient(135deg, #2B6EFF, #1E5AF7);
+            --text-main: #EFF3F6;
+            --text-secondary: #8E8E9A;
+            --text-muted: #6C6C7A;
+            --border: rgba(255, 255, 255, 0.08);
+            --border-glow: rgba(43, 110, 255, 0.2);
+            
+            /* Spacing & Radii */
+            --radius-xl: 24px;
+            --radius-lg: 20px;
+            --radius-md: 12px;
+            --container-w: 420px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--bg-deep);
+            font-family: 'Outfit', -apple-system, system-ui, sans-serif;
+            color: var(--text-main);
+            line-height: 1.5;
+            padding: env(safe-area-inset-top) 16px 60px 16px;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Subtle Background Texture */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 50% -20%, rgba(43, 110, 255, 0.15), transparent 60%),
+                radial-gradient(circle at 0% 100%, rgba(43, 110, 255, 0.05), transparent 40%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .container {
+            max-width: var(--container-w);
+            margin: 0 auto;
+        }
+
+        /* Header Section */
+        .header {
+            margin: 40px 0 32px;
+            text-align: left;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        .logo {
+            font-size: 34px;
+            font-weight: 800;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -0.04em;
+            margin-bottom: 4px;
+            display: inline-block;
+        }
+
+        .tagline {
+            font-size: 15px;
+            color: var(--text-secondary);
+            font-weight: 400;
+            opacity: 0.8;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .tagline::after {
+            content: '';
+            height: 1px;
+            flex-grow: 1;
+            background: linear-gradient(90deg, rgba(255,255,255,0.1), transparent);
+            margin-left: 10px;
+        }
+
+        /* Weight Legend */
+        .weight-legend {
+            background: rgba(22, 22, 30, 0.6);
+            backdrop-filter: blur(10px);
+            border-radius: var(--radius-xl);
+            padding: 20px;
+            margin-bottom: 32px;
+            border: 1px solid var(--border);
+            animation: fadeIn 1s ease-out 0.2s both;
+        }
+
+        .legend-title {
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 14px;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .legend-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .legend-item {
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        .legend-item strong {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        /* Sections */
+        .section-title {
+            font-size: 22px;
+            font-weight: 700;
+            margin: 32px 0 16px 0;
+            letter-spacing: -0.02em;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .section-title span {
+            background: var(--bg-accent);
+            padding: 4px 12px;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Service Cards */
+        .service-card {
+            background-color: var(--bg-surface);
+            border-radius: var(--radius-lg);
+            padding: 20px;
+            margin-bottom: 16px;
+            border: 1px solid var(--border);
+            transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+            position: relative;
+            overflow: hidden;
+            animation: slideUp 0.6s ease-out both;
+        }
+
+        .service-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--border-glow);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+            background: var(--bg-card);
+        }
+
+        .service-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .service-name {
+            font-size: 18px;
+            font-weight: 700;
+            color: #FFFFFF;
+            letter-spacing: -0.01em;
+        }
+
+        .service-price {
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--primary);
+            background: var(--bg-accent);
+            padding: 6px 14px;
+            border-radius: 40px;
+            transition: transform 0.2s;
+        }
+
+        .service-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+
+        .service-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding-top: 14px;
+            border-top: 1px solid var(--border);
+        }
+
+        .chip {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border);
+            border-radius: 30px;
+            padding: 4px 12px;
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--text-muted);
+            transition: all 0.2s;
+        }
+
+        .service-card:hover .chip {
+            color: var(--text-secondary);
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+
+        /* Addons */
+        .addon-card {
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: var(--radius-md);
+            padding: 16px;
+            margin-bottom: 12px;
+            border-left: 4px solid var(--primary);
+            transition: all 0.3s;
+            animation: slideLeft 0.5s ease-out both;
+        }
+
+        .addon-card:hover {
+            background: rgba(255, 255, 255, 0.04);
+            transform: translateX(4px);
+        }
+
+        .addon-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 6px;
+        }
+
+        .addon-name {
+            font-size: 16px;
+            font-weight: 600;
+            color: #F2F2F7;
+        }
+
+        .addon-price {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .addon-desc {
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* Notes */
+        .info-note {
+            background: linear-gradient(135deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+            border-radius: var(--radius-lg);
+            padding: 20px;
+            margin-top: 24px;
+            font-size: 13px;
+            color: var(--text-muted);
+            text-align: center;
+            border: 1px solid var(--border);
+            line-height: 1.6;
+        }
+
+        .info-note strong {
+            color: var(--text-secondary);
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideLeft {
+            from { opacity: 0; transform: translateX(20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        /* Glass Stagger Delay */
+        .service-card:nth-child(1) { animation-delay: 0.1s; }
+        .service-card:nth-child(2) { animation-delay: 0.15s; }
+        .service-card:nth-child(3) { animation-delay: 0.2s; }
+        .service-card:nth-child(4) { animation-delay: 0.25s; }
+        .service-card:nth-child(5) { animation-delay: 0.3s; }
+        .service-card:nth-child(6) { animation-delay: 0.35s; }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-deep);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--bg-surface);
+            border-radius: 10px;
+        }
+
+        /* Print Optimization */
+        @media print {
+            body { background: white !important; color: black !important; padding: 0; }
+            body::before { display: none; }
+            .service-card, .addon-card, .weight-legend {
+                border: 1px solid #ddd !important;
+                background: white !important;
+                box-shadow: none !important;
+                break-inside: avoid;
+            }
+            .service-price, .addon-price { color: #2B6EFF !important; background: #f0f4ff !important; }
+            .logo { color: black !important; background: none !important; -webkit-text-fill-color: black !important; }
+            .tagline::after { display: none; }
+            @page { margin: 1.5cm; }
+        }
+
+        /* iOS Notch/Safe Area Utility */
+        @supports (padding: env(safe-area-inset-top)) {
+            .header {
+                margin-top: calc(40px + env(safe-area-inset-top));
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header class="header">
+        <div class="logo">Chic Doggie</div>
+        <p class="tagline">✦ Professional Grooming • Preços em USD</p>
+    </header>
+
+    <div class="weight-legend">
+        <div class="legend-title">📏 Portes (peso em libras)</div>
+        <div class="legend-grid">
+            <div class="legend-item"><strong>Pequeno:</strong> até 35 lbs</div>
+            <div class="legend-item"><strong>Médio:</strong> 36 – 70 lbs</div>
+            <div class="legend-item"><strong>Grande:</strong> 71 – 100 lbs</div>
+            <div class="legend-item"><strong>Extra Grande:</strong> >100 lbs</div>
+        </div>
+    </div>
+
+    <h2 class="section-title">
+        🛁 Serviços principais <span>escolha 1</span>
+    </h2>
+
+    <article class="service-card">
+        <div class="service-header">
+            <h3 class="service-name">🐕 Pacote Filhote</h3>
+            <span class="service-price">$40</span>
+        </div>
+        <p class="service-desc">Primeira tosa para filhotes (até 6 meses): banho, secagem, escovação, unhas, ouvidos, dentes e tosa higiênica.</p>
+        <div class="service-meta">
+            <span class="chip">até 35 lbs</span>
+            <span class="chip">60 min</span>
+        </div>
+    </article>
+
+    <article class="service-card">
+        <div class="service-header">
+            <h3 class="service-name">✂️ Tosa Completa – Pequeno</h3>
+            <span class="service-price">$55</span>
+        </div>
+        <p class="service-desc">Shampoo premium, condicionador, escovação, secagem, unhas, tosa profissional completa e finalização.</p>
+        <div class="service-meta">
+            <span class="chip">até 35 lbs</span>
+            <span class="chip">60 min</span>
+        </div>
+    </article>
+
+    <article class="service-card">
+        <div class="service-header">
+            <h3 class="service-name">✂️ Tosa Completa – Médio</h3>
+            <span class="service-price">$70</span>
+        </div>
+        <p class="service-desc">Inclui todos os benefícios da tosa premium + acabamento especial para pelagem média.</p>
+        <div class="service-meta">
+            <span class="chip">36 – 70 lbs</span>
+            <span class="chip">75 min</span>
+        </div>
+    </article>
+
+    <article class="service-card">
+        <div class="service-header">
+            <h3 class="service-name">✂️ Tosa Completa – Grande</h3>
+            <span class="service-price">$90</span>
+        </div>
+        <p class="service-desc">Pacote completo para raças grandes: shampoo ultra hidratante, tosa profissional e escovação profunda.</p>
+        <div class="service-meta">
+            <span class="chip">71 – 100 lbs</span>
+            <span class="chip">90 min</span>
+        </div>
+    </article>
+
+    <article class="service-card">
+        <div class="service-header">
+            <h3 class="service-name">🦁 Tosa – Extra Grande</h3>
+            <span class="service-price">$120</span>
+        </div>
+        <p class="service-desc">Para cães acima de 100 lbs com pelagem longa. Banho premium, corte especial e hidratação intensiva.</p>
+        <div class="service-meta">
+            <span class="chip">>100 lbs</span>
+            <span class="chip">120 min</span>
+        </div>
+    </article>
+
+    <article class="service-card">
+        <div class="service-header">
+            <h3 class="service-name">💧 Banho – Pequeno</h3>
+            <span class="service-price">$30</span>
+        </div>
+        <p class="service-desc">Shampoo premium, condicionador, escovação, secagem, unhas e limpeza de ouvidos. (Pelo curto)</p>
+        <div class="service-meta">
+            <span class="chip">até 35 lbs</span>
+            <span class="chip">45 min</span>
+        </div>
+    </article>
+
+    <article class="service-card">
+        <div class="service-header">
+            <h3 class="service-name">🌀 Dupla Camada</h3>
+            <span class="service-price">$70</span>
+        </div>
+        <p class="service-desc">Tratamento para cães de pelo duplo ou longo. Exige tempo extra de secagem e escovação técnica.</p>
+        <div class="service-meta">
+            <span class="chip">qualquer porte</span>
+            <span class="chip">+ tempo</span>
+        </div>
+    </article>
+
+    <h2 class="section-title">
+        ✨ Adicionais <span>múltipla escolha</span>
+    </h2>
+
+    <div class="addon-card">
+        <div class="addon-row">
+            <span class="addon-name">✂️ Tosa Rápida</span>
+            <span class="addon-price">$18</span>
+        </div>
+        <p class="addon-desc">Face, patas ou sanitária. Escolha uma área específica durante o banho.</p>
+    </div>
+
+    <div class="addon-card">
+        <div class="addon-row">
+            <span class="addon-name">🧹 Furminator (Desbaste)</span>
+            <span class="addon-price">$25 – $35</span>
+        </div>
+        <p class="addon-desc">Remoção profunda de subpelo morto. Reduz a queda em até 90%.</p>
+    </div>
+
+    <div class="addon-card">
+        <div class="addon-row">
+            <span class="addon-name">⚠️ Manuseio Especial</span>
+            <span class="addon-price">$25</span>
+        </div>
+        <p class="addon-desc">Pets agressivos, com medo severo ou que exigem dois profissionais.</p>
+    </div>
+
+    <section class="info-note">
+        <strong>🐾 Compromisso Chic Doggie</strong><br>
+        Todos os serviços incluem produtos de alta performance e finalização perfumada.<br>
+        Preços baseados na condição da pelagem e comportamento do pet.
+    </section>
+
+    <section class="info-note" style="border-style: dashed; background: transparent;">
+        📱 Dica: Toque em qualquer serviço para ver detalhes.<br>
+        Portes com base no peso real (lbs).
+    </section>
+</div>
+</body>
+</html>
